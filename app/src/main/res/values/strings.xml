@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="popular">Most Popular</string>
+    <string name="rated">Highest Rated</string>
+    <string name="error_message">
+        An error has occurred. Probably you are offline. Please, make sure that you have a internet
+        connection. Try again selecting a option in menu.
+    </string>
+
+    <!-- The movie DB URLs -->
+    <string name="poster_url">https://image.tmdb.org/t/p/w500</string>
+    <string name="most_popular_url">https://api.themoviedb.org/3/movie/popular</string>
+    <string name="highest_rated_url">https://api.themoviedb.org/3/movie/top_rated</string>
+
+    <!-- TODO Add key-->
+    <string name="key"></string>
+
+    <!-- JSON Tags-->
+    <string name="JSON_tag_results">results</string>
+    <string name="JSON_tag_title">title</string>
+    <string name="JSON_tag_poster_path">poster_path</string>
+    <string name="JSON_tag_overview">overview</string>
+    <string name="JSON_tag_release_date">release_date</string>
+    <string name="JSON_tag_vote_average">vote_average</string>
+
+    <!-- api_key Parameter -->
+    <string name="api_key_param">api_key</string>
+
+    <!-- Content Descriptions -->
+    <string name="movieNameBackground">Movie name background</string>
+    <string name="posterMini">Mini Poster Image</string>
+    <string name="poster">Poster Image</string>
+</resources>
