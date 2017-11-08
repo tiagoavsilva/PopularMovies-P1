@@ -1,9 +1,13 @@
 package com.example.android.filmesfamosos;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -69,7 +74,33 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         mRecyclerView.setAdapter(mMoviesAdapter);
 
         Log.i(TAG, "searchMode: "+searchMode);
-        loadMoviesData(searchMode);
+        checkNetworkConnection(this);
+    }
+
+    private void checkNetworkConnection(final Context context) {
+        ConnectivityManager cm =
+                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+        if(activeNetwork != null && activeNetwork.isConnectedOrConnecting()){
+            Log.e(TAG, "is connected");
+            loadMoviesData(searchMode);
+        }
+        else{
+            Log.e(TAG, "is disconnected");
+            FrameLayout MainCoordinatorLayout =  (FrameLayout) findViewById(R.id.coordinatorLayout);
+            Snackbar snackbar =
+                    Snackbar.make(MainCoordinatorLayout, getString(R.string.withoutInternet),
+                            Snackbar.LENGTH_LONG);
+            snackbar.setAction(getString(R.string.retry), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    checkNetworkConnection(context);
+                }
+            });
+            showErrorMessage();
+            snackbar.show();
+        }
     }
 
     private void loadMoviesData(int mode){
@@ -98,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
         /* Then, show the error */
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
+
     private class FetchMoviesTask extends AsyncTask<Integer,Void,Movie[]>{
 
         @Override
@@ -154,13 +186,13 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Mov
 
         if (id == R.id.popular) {
             searchMode = 1;
-            loadMoviesData(searchMode);
+            checkNetworkConnection(this);
             return true;
         }
 
         if (id == R.id.highest_rated) {
             searchMode = 2;
-            loadMoviesData(searchMode);
+            checkNetworkConnection(this);
             return true;
         }
         return super.onOptionsItemSelected(item);
