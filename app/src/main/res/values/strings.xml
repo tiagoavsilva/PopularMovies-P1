@@ -7,7 +7,7 @@
     <string name="retry">Retry</string>
 
     <!-- api_key Parameter -->
-    <string name="api_key_param">api_key</string>
+    <string name="api_key_param" translatable="false">api_key</string>
     <!-- TODO Add key-->
     <string name="key"></string>
 
@@ -17,12 +17,12 @@
     <string name="highest_rated_url">https://api.themoviedb.org/3/movie/top_rated</string>
 
     <!-- JSON Tags-->
-    <string name="JSON_tag_results">results</string>
-    <string name="JSON_tag_title">title</string>
-    <string name="JSON_tag_poster_path">poster_path</string>
-    <string name="JSON_tag_overview">overview</string>
-    <string name="JSON_tag_release_date">release_date</string>
-    <string name="JSON_tag_vote_average">vote_average</string>
+    <string name="JSON_tag_results" translatable="false">results</string>
+    <string name="JSON_tag_title" translatable="false">title</string>
+    <string name="JSON_tag_poster_path" translatable="false">poster_path</string>
+    <string name="JSON_tag_overview" translatable="false">overview</string>
+    <string name="JSON_tag_release_date" translatable="false">release_date</string>
+    <string name="JSON_tag_vote_average" translatable="false">vote_average</string>
 
     <!-- Content Descriptions -->
     <string name="movieNameBackground">Movie name background</string>

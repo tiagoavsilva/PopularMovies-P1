@@ -5,25 +5,25 @@ import android.os.Parcelable;
 
 public class Movie implements Parcelable{
     private final String title;
-    private final String poster_path;
+    private final String posterPath;
     private final String overview;
-    private final String release_date;
-    private final String vote_average;
+    private final String releaseDate;
+    private final String voteAverage;
 
     public Movie(String title, String poster_path, String overview, String release_date, String vote_average) {
         this.title = title;
-        this.poster_path = poster_path;
+        this.posterPath = poster_path;
         this.overview = overview;
-        this.release_date = release_date;
-        this.vote_average = vote_average;
+        this.releaseDate = release_date;
+        this.voteAverage = vote_average;
     }
 
     private Movie(Parcel in) {
         title = in.readString();
-        poster_path = in.readString();
+        posterPath = in.readString();
         overview = in.readString();
-        release_date = in.readString();
-        vote_average = in.readString();
+        releaseDate = in.readString();
+        voteAverage = in.readString();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -47,10 +47,10 @@ public class Movie implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeString(poster_path);
+        dest.writeString(posterPath);
         dest.writeString(overview);
-        dest.writeString(release_date);
-        dest.writeString(vote_average);
+        dest.writeString(releaseDate);
+        dest.writeString(voteAverage);
     }
 
     public String getTitle() {
@@ -58,7 +58,7 @@ public class Movie implements Parcelable{
     }
 
     public String getPoster_path() {
-        return poster_path;
+        return posterPath;
     }
 
     public String getOverview() {
@@ -66,21 +66,21 @@ public class Movie implements Parcelable{
     }
 
     public String getRelease_date() {
-        return release_date;
+        return releaseDate;
     }
 
     public String getVote_average() {
-        return vote_average;
+        return voteAverage;
     }
 
     @Override
     public String toString() {
         return "Movie{" +
                 "title='" + title + '\'' +
-                ", poster_path='" + poster_path + '\'' +
+                ", poster_path='" + posterPath + '\'' +
                 ", overview='" + overview + '\'' +
-                ", release_date='" + release_date + '\'' +
-                ", vote_average='" + vote_average + '\'' +
+                ", release_date='" + releaseDate + '\'' +
+                ", vote_average='" + voteAverage + '\'' +
                 '}';
     }
 }
